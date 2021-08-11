@@ -1,0 +1,12 @@
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8" *ngFor="let post of posts">
+      <h1>{{ post.title }}</h1>
+      <p>By {{ post.author }} on {{ post.date_posted }}</p>
+      <p>{{ post.content }}</p>
+    </div>
+    <div class="col-md-4" style="margin-top: -140px">
+      <app-side-bar></app-side-bar>
+    </div>
+  </div>
+</main>
