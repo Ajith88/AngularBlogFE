@@ -145,6 +145,19 @@
     </div>
   </article>
 </div>
+<div class="container">
+  <ul class="pagination">
+    <li class="page-item">
+      <input type="button" #input1 value='Previous' (click)="getPreviousPosts()" class="page-link">
+    </li>
+    <li class="page-item" *ngFor="let pagee of pages">
+      <input [ngClass]="{'btn btn-primary': 'page==pagee'}" type="button" #input value="{{pagee}}" (click)="getPosts(input)" class="page-link">
+    </li>
+    <li class="page-item">
+      <input type="button" #input2 value='Next' (click)="getNextPosts()" class="page-link">
+    </li>
+  </ul>
+</div>
 
 <script>
   $(document).ready(function () {

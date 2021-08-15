@@ -19,9 +19,22 @@
           <a class="nav-item nav-link" routerLink="/about">About</a>
         </div>
         <!-- Navbar Right Side -->
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" routerLink="/login">Login</a>
-          <a class="nav-item nav-link" routerLink="/register">Register</a>
+        <ng-template #anonymousUser>
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" routerLink="/login">Login</a>
+            <a class="nav-item nav-link" routerLink="/register">Register</a>
+          </div>
+        </ng-template>
+
+        <div
+          class="navbar-nav"
+          *ngIf="user$ | async as user; else anonymousUser"
+        >
+          <a class="nav-item nav-link" routerLink="/new_post">New Post</a>
+          <a class="nav-item nav-link" routerLink="/account">Account</a>
+          <a class="nav-item nav-link" routerLink="" (click)="onLogout()"
+            >Logout</a
+          >
         </div>
       </div>
     </div>

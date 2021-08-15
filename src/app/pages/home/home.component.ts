@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/app/entities/post.model';
 
 @Component({
   selector: 'app-home',
@@ -7,24 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  posts = [
-    {
-      'author': 'Corey Schafer',
-      'title': 'Blog Post 1',
-      'content': 'First Post Content',
-      'date_posted': 'April 20, 2018'
-    },
-    {
-      'author': 'Jane Doe',
-      'title': 'Blog Post 2',
-      'content': 'Second Post Content',
-      'date_posted': 'April 21, 2018'
-    }
-  ]
+  posts: Post[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get('http://localhost:5000/posts').subscribe((posts: any) => {
+      //ts-ignore
+      console.log(posts)
+      this.posts =  posts
+    })
   }
 
 }

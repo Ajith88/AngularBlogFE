@@ -1,2 +1,14 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="container">
+        <ngx-flash-messages></ngx-flash-messages>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <div class="col-md-4" style="margin-top: -140px">
+      <app-side-bar></app-side-bar>
+    </div>
+  </div>
+</main>

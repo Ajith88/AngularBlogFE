@@ -1,1 +1,105 @@
-<p>register works!</p>
+<div class="content-section">
+  <form action="" method="post" #userForm="ngForm" (ngSubmit)="save(userForm)">
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Join Today</legend>
+      <div class="form-group">
+        <label for="" class="form-control-label">Username</label>
+        <input
+          required
+          autocomplete="off"
+          #userName="ngModel"
+          ngModel
+          name="userName"
+          type="text"
+          class="form-control form-control-md"
+          [ngClass]="{
+            'is-invalid': userName.touched && userName.invalid,
+            'is-valid': userName.touched && userName.valid
+          }"
+        />
+        <div *ngIf="userName.touched && userName.invalid">
+          <small class="text-danger" *ngIf="userName.errors?.required"
+            >User Name is required</small
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="form-control-label">Email</label>
+        <input
+          required
+          autocomplete="off"
+          #email="ngModel"
+          ngModel
+          name="email"
+          type="text"
+          class="form-control form-control-md"
+          [ngClass]="{
+            'is-invalid': email.touched && email.invalid,
+            'is-valid': email.touched && email.valid
+          }"
+        />
+        <div *ngIf="email.touched && email.invalid">
+          <small class="text-danger" *ngIf="email.errors?.required"
+            >Email is required</small
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="form-control-label">Password</label>
+        <input
+          required
+          autocomplete="off"
+          #password="ngModel"
+          ngModel
+          name="password"
+          type="text"
+          class="form-control form-control-md"
+          [ngClass]="{
+            'is-invalid': password.touched && password.invalid,
+            'is-valid': password.touched && password.valid
+          }"
+        />
+        <div *ngIf="password.touched && password.invalid">
+          <small class="text-danger" *ngIf="password.errors?.required"
+            >Password is required</small
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="form-control-label">Confirm Password</label>
+        <input
+          required
+          autocomplete="off"
+          #confirmPassword="ngModel"
+          ngModel
+          name="confirmPassword"
+          type="text"
+          class="form-control form-control-md"
+          [ngClass]="{
+            'is-invalid': confirmPassword.touched && confirmPassword.invalid,
+            'is-valid': confirmPassword.touched && confirmPassword.valid
+          }"
+        />
+        <div *ngIf="confirmPassword.touched && confirmPassword.invalid">
+          <small class="text-danger" *ngIf="confirmPassword.errors?.required"
+            >Confirm Password is required</small
+          >
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group">
+      <button
+        type="submit"
+        [disabled]="userForm.invalid"
+        class="btn btn-outline-info"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+<div class="border-top pt-3">
+  <small class="text-muted">
+    Already have an account <a routerLink="/login" class="ml-2">Log In</a>
+  </small>
+</div>

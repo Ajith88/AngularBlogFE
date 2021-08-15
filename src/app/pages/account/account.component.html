@@ -1,0 +1,78 @@
+<div class="content-section">
+  <div class="media">
+    <img
+      class="rounded-circle account-img"
+      src="http://localhost:5000/{{ user?.image_file }}"
+    />
+    <div class="media-body">
+      <h2 class="account-heading">{{ user?.username }}</h2>
+      <p class="text-secondary">{{ user?.email }}</p>
+    </div>
+  </div>
+  <!-- FORM HERE -->
+  <form
+    action=""
+    method="post"
+    #userForm="ngForm"
+    enctype="multipart/form-data"
+    (ngSubmit)="save(userForm)"
+  >
+    <div class="form-group">
+      <label for="" class="form-control-label">Email</label>
+      <input
+        required
+        autocomplete="off"
+        #email="ngModel"
+        [(ngModel)]="user.email"
+        name="email"
+        type="text"
+        class="form-control form-control-md"
+        [ngClass]="{
+          'is-invalid': email.touched && email.invalid,
+          'is-valid': email.touched && email.valid
+        }"
+      />
+      <div *ngIf="email.touched && email.invalid">
+        <small class="text-danger" *ngIf="email.errors?.required"
+          >Email is required</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="" class="form-control-label">Username</label>
+      <input
+        required
+        autocomplete="off"
+        #userName="ngModel"
+        [(ngModel)]="user.username"
+        name="userName"
+        type="text"
+        class="form-control form-control-md"
+        [ngClass]="{
+          'is-invalid': userName.touched && userName.invalid,
+          'is-valid': userName.touched && userName.valid
+        }"
+      />
+      <div *ngIf="userName.touched && userName.invalid">
+        <small class="text-danger" *ngIf="userName.errors?.required"
+          >User Name is required</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input #image_file ngModel name="file" type="file" />
+    </div>
+
+    <div class="form-group">
+      <button
+        type="submit"
+        [disabled]="userForm.invalid"
+        class="btn btn-outline-info"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
