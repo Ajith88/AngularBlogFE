@@ -1,0 +1,30 @@
+<div class="content-section">
+  <form method="POST" #request_reset="ngForm" (ngSubmit) ="reset_password(request_reset)" action="">
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Reset Password</legend>
+          <div class="form-group">
+              <label for="" class="form-control-label">Email</label>
+              <input required
+              autocomplete="off"
+              #email="ngModel"
+              ngModel
+              placeholder="Enter Your Email"
+              name="email"
+              type="text"
+              class="form-control form-control-md"
+              [ngClass]="{
+                'is-invalid': email.touched && email.invalid,
+                'is-valid': email.touched && email.valid
+              }">
+              <div *ngIf="email.touched && email.invalid">
+                <small class="text-danger" *ngIf="email.errors?.required"
+                  >Email is required</small
+                >
+              </div>
+          </div>
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Submit</button>
+      </div>
+  </form>
+</div>

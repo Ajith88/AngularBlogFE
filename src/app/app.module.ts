@@ -19,7 +19,9 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { CreateandupdatepostComponent } from './pages/createandupdatepost/createandupdatepost.component';
 import { UpdatePostComponent } from './pages/update-post/update-post.component';
-import { PaginatePostsComponent } from './pages/paginate-posts/paginate-posts.component'
+import { PaginatePostsComponent } from './pages/paginate-posts/paginate-posts.component';
+import { RequestResetFormComponent } from './pages/request-reset-form/request-reset-form.component';
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { PaginatePostsComponent } from './pages/paginate-posts/paginate-posts.co
     CreateandupdatepostComponent,
     UpdatePostComponent,
     PaginatePostsComponent,
+    RequestResetFormComponent,
+    ResetPasswordFormComponent,
   ],
   imports: [
     BrowserModule,

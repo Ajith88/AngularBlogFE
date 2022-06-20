@@ -4,14 +4,17 @@ import { AboutComponent } from './pages/about/about.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard'
 import { AccountComponent } from './pages/account/account.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { UpdatePostComponent } from './pages/update-post/update-post.component';
 import { PaginatePostsComponent } from './pages/paginate-posts/paginate-posts.component';
+import { RequestResetFormComponent } from './pages/request-reset-form/request-reset-form.component';
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
 
 const redirectUnAuthorizedLogin= ()=> redirectUnauthorizedTo(['login'])
+const redirectAuthorizedLogin= ()=> redirectLoggedInTo(['home'])
 
 const routes: Routes = [
   {
@@ -49,6 +52,16 @@ const routes: Routes = [
   {
     path: 'new_post',
     component: CreatePostComponent
+  },
+  {
+    path: 'reset-password',
+    component: RequestResetFormComponent,
+    data: {authGuardPipe: redirectAuthorizedLogin}
+  },
+  {
+    path: 'reset-password/:token',
+    component: ResetPasswordFormComponent,
+    data: {authGuardPipe: redirectAuthorizedLogin}
   },
   {
     path: 'login',
